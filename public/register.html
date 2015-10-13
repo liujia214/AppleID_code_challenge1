@@ -27,7 +27,7 @@
         <div ng-show="registerForm.$submitted || registerForm.passwordConfirm.$dirty" class="error">
             <small ng-show="registerForm.passwordConfirm.$error.required">Please confirm password</small>
         </div>
-        <div class="message" ng-class="{display:hide}"><small><i>{{message}}</i></small></div>
+        <div class="error" ng-class="{display:hide}" ><small>{{message}}</small></div>
 
         <div class="label">Birthday</div>
         <input type="date" name="birthday" class="signup" ng-min="minAge" ng-max="maxAge" required ng-model="user.birthday"><small>*</small>
