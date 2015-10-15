@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Myriad Set Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: url('myriad-set-pro_thin.woff');
+}
 body{
   font-family: Myriad Set Pro,Helvetica Neue,Helvetica,Arial,sans-serif;
   font-size:18px;
