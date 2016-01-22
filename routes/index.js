@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
+/*var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/test',function(err){
   if(err){
@@ -19,8 +19,6 @@ var people = mongoose.model('people',{
   interests:String
 });
 
-
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
@@ -46,5 +44,27 @@ router.patch('/user/:id',function(req,res){
     }
   });
 });
+*/
+
+var people = [];
+
+
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+router.post('/user',function(req,res){
+  people.push(req.body);
+  console.log(people);
+  res.status(201).json(req.body);
+});
+
+router.put('/user',function(req,res){
+
+  people[0] = req.body;
+  console.log(people);
+  res.status(200).json(req.body);
+});
+
 
 module.exports = router;

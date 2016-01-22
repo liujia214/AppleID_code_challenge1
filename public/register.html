@@ -1,44 +1,43 @@
+<div class="title">Create an ID</div>
+<form name="registerForm" novalidate ng-submit="submit(registerForm.$valid)">
+    <div class="label">Name</div>
+    <input type="text" name="firstName" placeholder="First Name" class="signup" required pattern="[a-zA-Z]{0,50}" ng-model="user.firstName" title="only letters"><small>*</small>
+    <div ng-show="registerForm.$submitted || registerForm.firstName.$dirty" class="error">
+        <small ng-show="registerForm.firstName.$error.required">First Name is required</small>
+        <small ng-show="registerForm.firstName.$error.pattern">Max length 50, letters only</small>
+    </div>
+    <input type="text" name="lastName" placeholder="Last Name" class="signup" ng-model="user.lastName">
 
-    <div class="title">Create an ID</div>
-    <form name="registerForm" novalidate ng-submit="submit(registerForm.$valid)">
-        <div class="label">Name</div>
-        <input type="text" name="firstName" placeholder="First Name" class="signup" required pattern="[a-zA-Z]{0,50}" ng-model="user.firstName" title="only letters"><small>*</small>
-        <div ng-show="registerForm.$submitted || registerForm.firstName.$dirty" class="error">
-            <small ng-show="registerForm.firstName.$error.required">First Name is required</small>
-            <small ng-show="registerForm.firstName.$error.pattern">Max length 50, letters only</small>
-        </div>
-        <input type="text" name="lastName" placeholder="Last Name" class="signup" ng-model="user.lastName">
+    <div class="label">ID and Password</div>
+    <input type="email" name="email" placeholder="jappleseed@example.com" class="signup" pattern="[\S]{0,56}" required ng-model="user.username" ng-model-options="{updateOn:'blur'}"><small>*</small>
+    <div ng-show="registerForm.$submitted || registerForm.email.$dirty" class="error">
+        <small ng-show="registerForm.email.$error.required">Email is required</small>
+        <small ng-show="registerForm.email.$error.email">This is not a valid email</small>
+        <small ng-show="registerForm.email.$error.pattern">at most 56 characters</small>
+    </div>
 
-        <div class="label">ID and Password</div>
-        <input type="email" name="email" placeholder="jappleseed@example.com" class="signup" pattern="[\S]{0,56}" required ng-model="user.username" ng-model-options="{updateOn:'blur'}"><small>*</small>
-        <div ng-show="registerForm.$submitted || registerForm.email.$dirty" class="error">
-            <small ng-show="registerForm.email.$error.required">Email is required</small>
-            <small ng-show="registerForm.email.$error.email">This is not a valid email</small>
-            <small ng-show="registerForm.email.$error.pattern">at most 56 characters</small>
-        </div>
+    <input type="password" name="password" placeholder="password" class="signup" pattern="[\S]{6,}" required title="Six or more characters" ng-model="user.password" ng-model-options="{updateOn:'blur'}"><small>*</small>
+    <div ng-show="registerForm.$submitted || registerForm.password.$dirty" class="error">
+        <small ng-show="registerForm.password.$error.required">Password is required</small>
+        <small ng-show="registerForm.password.$error.pattern">at least 6 characters</small>
+    </div>
 
-        <input type="password" name="password" placeholder="password" class="signup" pattern="[\S]{6,}" required title="Six or more characters" ng-model="user.password" ng-model-options="{updateOn:'blur'}"><small>*</small>
-        <div ng-show="registerForm.$submitted || registerForm.password.$dirty" class="error">
-            <small ng-show="registerForm.password.$error.required">Password is required</small>
-            <small ng-show="registerForm.password.$error.pattern">at least 6 characters</small>
-        </div>
+    <input type="password" name="passwordConfirm" placeholder="confirm password" class="signup" ng-model="user.confirmPassword" ng-model-options="{updateOn:'blur'}" required><small>*</small>
+    <div ng-show="registerForm.$submitted || registerForm.passwordConfirm.$dirty" class="error">
+        <small ng-show="registerForm.passwordConfirm.$error.required">Please confirm password</small>
+    </div>
+    <div class="error" ng-class="{display:hide}" ><small>{{message}}</small></div>
 
-        <input type="password" name="passwordConfirm" placeholder="confirm password" class="signup" ng-model="user.confirmPassword" ng-model-options="{updateOn:'blur'}" required><small>*</small>
-        <div ng-show="registerForm.$submitted || registerForm.passwordConfirm.$dirty" class="error">
-            <small ng-show="registerForm.passwordConfirm.$error.required">Please confirm password</small>
-        </div>
-        <div class="error" ng-class="{display:hide}" ><small>{{message}}</small></div>
+    <div class="label">Birthday</div>
+    <input type="date" name="birthday" class="signup" ng-min="minAge" ng-max="maxAge" required ng-model="user.birthday"><small>*</small>
+    <div ng-show="registerForm.$submitted || registerForm.birthday.$dirty" class="error">
+        <small ng-show="registerForm.birthday.$error.required">Birthday is required</small>
+        <small ng-show="registerForm.birthday.$error.min">must be at most 150</small>
+        <small ng-show="registerForm.birthday.$error.max">must be at least 14</small>
+    </div>
 
-        <div class="label">Birthday</div>
-        <input type="date" name="birthday" class="signup" ng-min="minAge" ng-max="maxAge" required ng-model="user.birthday"><small>*</small>
-        <div ng-show="registerForm.$submitted || registerForm.birthday.$dirty" class="error">
-            <small ng-show="registerForm.birthday.$error.required">Birthday is required</small>
-            <small ng-show="registerForm.birthday.$error.min">must be younger than 150</small>
-            <small ng-show="registerForm.birthday.$error.max">must be older than 14</small>
-        </div>
-
-        <div id="button">
-            <button type="reset" class="clear" onfocus="this.blur()" ng-click="reset($event,registerForm)">Clear</button>
-            <button type="submit" class="submit" onfocus="this.blur()" >Submit</button>
-        </div>
-    </form>
+    <div id="button">
+        <button type="reset" class="clear" onfocus="this.blur()" ng-click="reset($event,registerForm)">Clear</button>
+        <button type="submit" class="submit" onfocus="this.blur()" >Submit</button>
+    </div>
+</form>

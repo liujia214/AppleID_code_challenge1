@@ -16,24 +16,25 @@ var myApp = angular.module('signUp',['ui.router'])
     }).run(function($state){
         $state.go('register');
     });
+
 myApp.controller('registerController',function($scope,signService,$state){
-   $scope.master = {};
+    $scope.master = {};
     $scope.hide = true;
     $scope.minAge = (function(){
-      var currentDate = new Date();
+        var currentDate = new Date();
         var currentYear = currentDate.getFullYear();
         var minAge = currentYear - 150;
-        return (new Date(minAge,currentDate.getMonth(),currentDate.getDay())).toISOString().substr(0,10);
+        return (new Date(minAge,currentDate.getMonth(),currentDate.getDate())).toISOString().substr(0,10);
     })();
     $scope.maxAge = (function(){
         var currentDate = new Date();
         var currentYear = currentDate.getFullYear();
         var minAge = currentYear - 14;
-        return (new Date(minAge,currentDate.getMonth(),currentDate.getDay())).toISOString().substr(0,10);
+        return (new Date(minAge,currentDate.getMonth(),currentDate.getDate())).toISOString().substr(0,10);
     })();
     $scope.submit = function(isValid){
         if(isValid){
-            if($scope.user.confirmPassword === $scope.user.password && typeof $scope.user.password !='undefined'){
+            if(typeof $scope.user.password !='undefined' && $scope.user.confirmPassword === $scope.user.password){
                 var date = $scope.user.birthday.toISOString().substr(0,10).split('-');
                 $scope.user.birthday = new Date(date[0],date[1],date[2]);
                 signService.post($scope.user).then(function(result){
@@ -43,7 +44,7 @@ myApp.controller('registerController',function($scope,signService,$state){
                     console.log(error);
                 })
             }else{
-                $scope.message = 'password is not correct';
+                $scope.message = "password doesn't match";
                 $scope.hide = false;
             }
         }
@@ -84,7 +85,6 @@ myApp.controller('successController',function($scope,signService,$state){
             }else{
                 $scope.messageBio = 'Enter Bio Please';
             }
-
         };
         $scope.updateInt = function(){
             if($scope.interests !== '' && $scope.interests !== null && typeof $scope.interests !== 'undefined'){
@@ -96,12 +96,10 @@ myApp.controller('successController',function($scope,signService,$state){
             }else{
                 $scope.messageInt = 'Enter Interests Please';
             }
-
         };
     }else{
         $state.go('register');
     }
-
 });
 
 myApp.factory('signService',function($http){
@@ -112,7 +110,10 @@ myApp.factory('signService',function($http){
             return  $http.post('/user',data);
        },
        update:function(data){
-           return $http.patch('/user/'+data._id,data);
+            return $http.put('/user',data);
        }
+       //update:function(data){
+       //    return $http.patch('/user/'+data.id,data);
+       //}
    }
 });
