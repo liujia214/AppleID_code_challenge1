@@ -55,21 +55,50 @@ myApp.controller('registerController',function($scope,signService,$state){
         }
     };
     //clear all entered user data
-    $scope.reset = function(event,form){
-      event.preventDefault();
-      if(confirm('are you sure to clear information?')){
-          if(form){
-              form.$setPristine();
-              form.$setUntouched();
-          }
-          console.log($scope.user);
-          $scope.user = angular.copy($scope.master);
-          $scope.user.firstName = '';
-          $scope.user.username = '';
-          $scope.user.password = '';
-          $scope.user.birthday = '';
-          console.log($scope.user);
-      }
+    //$scope.reset = function(event,form){
+    //  event.preventDefault();
+    //
+    //  if(confirm('are you sure to clear info?')){
+    //      if(form){
+    //          form.$setPristine();
+    //          form.$setUntouched();
+    //      }
+    //      console.log($scope.user);
+    //      $scope.user = angular.copy($scope.master);
+    //      $scope.user.firstName = '';
+    //      $scope.user.username = '';
+    //      $scope.user.password = '';
+    //      $scope.user.birthday = '';
+    //      console.log($scope.user);
+    //  }
+    //};
+
+    //open dialog function
+    $scope.showDialog = function(e){
+        e.preventDefault();
+        document.getElementById('dialog').showModal();
+    };
+    //cancel and close dialog
+    $scope.cancel = function(e){
+        e.preventDefault();
+        document.getElementById('dialog').close();
+    };
+    //confirm to clear information
+    $scope.clear  = function(event,form){
+        event.preventDefault();
+        document.getElementById('dialog').close();
+        console.log(form);
+        if(form){
+            form.$setPristine();
+            form.$setUntouched();
+        }
+        console.log($scope.user);
+        $scope.user = angular.copy($scope.master);
+        $scope.user.firstName = '';
+        $scope.user.username = '';
+        $scope.user.password = '';
+        $scope.user.birthday = '';
+        console.log($scope.user);
     }
 });
 

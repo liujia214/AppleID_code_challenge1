@@ -37,7 +37,13 @@
     </div>
 
     <div id="button">
-        <button type="reset" class="clear" onfocus="this.blur()" ng-click="reset($event,registerForm)">Clear</button>
+        <button class="clear" onfocus="this.blur()" ng-click="showDialog($event)">Clear</button>
         <button type="submit" class="submit" onfocus="this.blur()" >Submit</button>
     </div>
+    <dialog id="dialog">
+        <div>Are you sure to clear information?</div>
+        <button id="no" ng-click="cancel($event)" class="success" onfocus="this.blur()">cancel</button>
+        <button id="yes" ng-click="clear($event,registerForm)" class="success" onfocus="this.blur()">yes</button>
+    </dialog>
 </form>
+

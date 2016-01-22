@@ -121,6 +121,21 @@ button{
   background:linear-gradient(top, #ffffff 5%,#dbdbdb 100%);
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0);
 }
+dialog{
+  width: 300px;
+  min-height: 150px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 30px 30px 0 10px;
+  text-align: right;
+}
+
+dialog button{
+  background: transparent -moz-linear-gradient(top , #FFF 5%, #EDEDED 100%) repeat scroll 0% 0%;
+  background: -webkit-linear-gradient(top, #ffffff 5%,#ededed 100%);
+  margin-top: 50px;
+}
+
 .display{
   display: none;
 }
