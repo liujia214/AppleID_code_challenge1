@@ -146,3 +146,8 @@ button.success{
 .result{
   font-size: 16px;
 }
+.edit{
+  display: inline-block;
+  width: 37%;
+  text-align: right;
+}

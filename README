@@ -4,3 +4,12 @@ Heroku address: https://applesignup.herokuapp.com
 1. clone repository
 2. npm install
 3. run server
+
+
+main page: views/index.ejs
+register page: public/register.html
+success page: public/success.html
+
+service logic page: public/javascripts/service.js
+
+backend page: routes/index.js

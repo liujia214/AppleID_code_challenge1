@@ -9,7 +9,7 @@
 <div ng-class="{display:showBio}" class="info result"><span>{{user.bio}}</span></div>
 <div ng-class="{display:hiddenBio}">
     <textarea type="text" rows="10" ng-model="bio"></textarea>
-    <div style="display: inline-block;width: 37%;text-align: right;">
+    <div class="edit">
         <button class="clear success" ng-click="hiddenBio = true;showBio = false;" onfocus="this.blur();">Cancel</button>
         <button ng-click="updateBio();" class="submit success" onfocus="this.blur();">Save</button>
     </div>
@@ -24,7 +24,7 @@
 <div ng-class="{display:showInt}" class="info result"><span>{{user.interests}}</span></div>
 <div ng-class="{display:hiddenInt}">
     <textarea type="text" rows="10" ng-model="interests"></textarea>
-    <div style="display: inline-block;width: 37%;text-align: right;">
+    <div class="edit">
         <button class="clear success" ng-click="hiddenInt = true;showInt = false;" onfocus="this.blur();">Cancel</button>
         <button ng-click="updateInt();" class="submit success" onfocus="this.blur();">Save</button>
     </div>

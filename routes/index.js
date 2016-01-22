@@ -53,12 +53,13 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+//add user info
 router.post('/user',function(req,res){
   people.push(req.body);
   console.log(people);
   res.status(201).json(req.body);
 });
-
+//update user info
 router.put('/user',function(req,res){
 
   people[0] = req.body;
